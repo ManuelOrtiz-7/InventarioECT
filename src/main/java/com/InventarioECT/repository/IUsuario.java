@@ -12,5 +12,4 @@ public interface IUsuario extends CrudRepository<Usuario, Integer> {
 
     Optional<Usuario> findByUsername(String username);
 
-
 }

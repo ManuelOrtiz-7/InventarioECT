@@ -20,17 +20,17 @@ public class SecurityConfig {
     SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
         return httpSecurity
                 .authorizeHttpRequests(auth -> {
-                    auth.requestMatchers("/login","/registro").permitAll();
+                    auth.requestMatchers("/login","/registro").permitAll();//Rutas publicas
                     auth.anyRequest().authenticated();
                 })
                 .sessionManagement(session -> {
                     session.sessionCreationPolicy(SessionCreationPolicy.STATELESS);
                 })
-                .formLogin(Customizer.withDefaults())
+                .formLogin(Customizer.withDefaults())//login por defecto
                 .build();
     }
 
-    @Bean
+    @Bean//Encriptacion de la contraseña
     PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
