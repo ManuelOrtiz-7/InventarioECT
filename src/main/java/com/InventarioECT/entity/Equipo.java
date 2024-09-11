@@ -17,8 +17,8 @@ import lombok.Setter;
 public class Equipo {
     @Id
     @Size(max = 50)
-    @Column(name = "nombre_equipo", nullable = false, length = 50)
-    private String nombreEquipo;
+    @Column(name = "codigo_equipo", nullable = false, length = 50)
+    private String codigoEquipo;
 
     @NotNull
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
@@ -29,6 +29,11 @@ public class Equipo {
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "id_dependencia", nullable = false)
     private Dependencia idDependencia;
+
+    @Size(max = 50)
+    @NotNull
+    @Column(name = "Nombre_Equipo", nullable = false, length = 50)
+    private String nombreEquipo;
 
     @Size(max = 45)
     @NotNull

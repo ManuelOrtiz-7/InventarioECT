@@ -21,8 +21,7 @@ public class Especificacione {
 
     @NotNull
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "nombre_equipo", nullable = false)
-    private Equipo nombreEquipo;
+    private Equipo codigoEquipo;
 
     @Size(max = 45)
     @NotNull
