@@ -5,6 +5,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+
+//Rutas publicas, login y registro
 @RestController
 @RequiredArgsConstructor
 public class AuthController {

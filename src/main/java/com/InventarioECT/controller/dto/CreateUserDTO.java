@@ -6,6 +6,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import java.util.Set;
 
+
+//DTO para la creacion de usuario
 @Data
 @AllArgsConstructor
 @NoArgsConstructor

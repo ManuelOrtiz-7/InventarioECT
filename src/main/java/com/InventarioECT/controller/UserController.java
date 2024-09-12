@@ -19,11 +19,11 @@ public class UserController {
 
     private IUsuario iUsuario;
 
-
+    // Creacion de un usuario.
     @PostMapping("/createUser")
     public ResponseEntity<?> createUser(@Valid @RequestBody CreateUserDTO createUserDTO) {
 
-        Set<Role> roles = createUserDTO.getRoles().stream()
+        Set<Role> roles = createUserDTO.getRoles().stream()//Obteniendo rol
                 .map(role -> Role.builder()
                         .nombreRol(ERole.valueOf(role))
                         .build())
@@ -43,6 +43,7 @@ public class UserController {
         return ResponseEntity.ok(usuario);
     }
 
+    //Eliminacion de usuario por id.
     @DeleteMapping("/deleteUser")
     public String deleteUser(@RequestParam String id) {
         iUsuario.deleteById(Integer.parseInt(id));

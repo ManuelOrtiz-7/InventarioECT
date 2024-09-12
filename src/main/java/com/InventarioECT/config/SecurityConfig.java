@@ -26,7 +26,7 @@ public class SecurityConfig {
                 .sessionManagement(session -> {
                     session.sessionCreationPolicy(SessionCreationPolicy.STATELESS);
                 })
-                .formLogin(Customizer.withDefaults())//login por defecto
+                .formLogin(Customizer.withDefaults())//login por defecto (mientras tanto)
                 .build();
     }
 
