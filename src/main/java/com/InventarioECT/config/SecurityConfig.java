@@ -4,7 +4,6 @@ import com.InventarioECT.config.filters.JwtAuthFilter;
 import com.InventarioECT.config.jwt.JwtUtils;
 import com.InventarioECT.service.UserDetailsServiceImpl;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
