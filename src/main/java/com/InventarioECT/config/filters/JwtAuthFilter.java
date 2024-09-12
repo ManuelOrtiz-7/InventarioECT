@@ -9,7 +9,6 @@ import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -24,9 +23,9 @@ import java.util.Map;
 
 public class JwtAuthFilter extends UsernamePasswordAuthenticationFilter {
 
-    private JwtUtils jwtUtils;
+    private final JwtUtils jwtUtils;
 
-    public JwtAuthFilter(JwtUtils jwtUtils){
+    public JwtAuthFilter(JwtUtils jwtUtils) {
         this.jwtUtils = jwtUtils;
     }
     //Metodo para intentar autenticarse
@@ -37,7 +36,7 @@ public class JwtAuthFilter extends UsernamePasswordAuthenticationFilter {
         String username = "";
         String password = "";
 
-        try{
+        try {
             usuario = new ObjectMapper().readValue(request.getInputStream(), Usuario.class);
             username = usuario.getUsername();
             password = usuario.getPassword();
@@ -72,9 +71,9 @@ public class JwtAuthFilter extends UsernamePasswordAuthenticationFilter {
         httpResponse.put("Username", user.getUsername());
 
         response.getWriter().write(new ObjectMapper().writeValueAsString(httpResponse));
-        response.setStatus(HttpStatus.OK.value());
-        response.setContentType(MediaType.APPLICATION_JSON_VALUE);
-        response.getWriter().flush();
+        response.setStatus(HttpStatus.OK.value()); //Verificacion de que todo se escriba correctamente
+        response.setContentType(MediaType.APPLICATION_JSON_VALUE);//Verificacion de que todo se escriba correctamente
+        response.getWriter().flush();//Verificacion de que todo se escriba correctamente
 
         super.successfulAuthentication(request, response, chain, authResult);
     }
