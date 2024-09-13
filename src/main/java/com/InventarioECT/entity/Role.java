@@ -16,7 +16,6 @@ public class Role {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Size(max = 255)
     @Column(name = "`nombre rol`")
     @Enumerated(EnumType.STRING)
     private ERole nombreRol;

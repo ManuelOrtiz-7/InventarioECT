@@ -15,9 +15,11 @@ public class AuthController {
     public String registro() {
         return "Pagina de registro";
     }
-
+/*
     @GetMapping("/login")
     public String login() {
         return "Pagina de login";
     }
+
+ */
 }
