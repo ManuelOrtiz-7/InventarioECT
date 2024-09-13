@@ -1,6 +1,7 @@
 package com.InventarioECT.config;
 
 import com.InventarioECT.config.filters.JwtAuthFilter;
+import com.InventarioECT.config.filters.JwtAuthorizationFilter;
 import com.InventarioECT.config.jwt.JwtUtils;
 import com.InventarioECT.service.UserDetailsServiceImpl;
 import lombok.RequiredArgsConstructor;
@@ -15,17 +16,20 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 @Configuration
 @EnableWebSecurity
 @RequiredArgsConstructor
 public class SecurityConfig {
-
     @Autowired
     JwtUtils jwtUtils;
 
     @Autowired
     UserDetailsServiceImpl userDetailsService;
+
+    @Autowired
+    JwtAuthorizationFilter jwtAuthorizationFilter;
 
     @Bean
     SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity, AuthenticationManager authenticationManager) throws Exception {
@@ -42,6 +46,7 @@ public class SecurityConfig {
                     session.sessionCreationPolicy(SessionCreationPolicy.STATELESS);
                 })
                 .addFilter(jwtAuthFilter)
+                .addFilterBefore(jwtAuthorizationFilter, UsernamePasswordAuthenticationFilter.class)
                 .build();
     }
 
