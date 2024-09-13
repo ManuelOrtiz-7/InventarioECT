@@ -20,5 +20,4 @@ public class AuthController {
     public String login() {
         return "Pagina de login";
     }
-
 }

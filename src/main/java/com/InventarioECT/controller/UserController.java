@@ -15,6 +15,7 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequiredArgsConstructor
+@RequestMapping("/api/users")
 public class UserController {
 
     private IUsuario iUsuario;
@@ -49,4 +50,20 @@ public class UserController {
         iUsuario.deleteById(Integer.parseInt(id));
         return "User deleted";
     }
+/*
+    //Actualizacion de un usuario por Id
+    @PutMapping("/updateUser")
+    public String updateUser(@RequestParam String id) {
+        iUsuario.updateById(Integer.parseInt(id));
+        return "Usuario Actualizado correctamente";
+    }
+
+    //Listar Usuarios
+
+    @RequestMapping("listUser")
+    public String listUser(@RequestParam String username) {
+        iUsuario.findByUsername(username);
+        return "Usuario Actualizado correctamente";
+    }
+*/
 }
